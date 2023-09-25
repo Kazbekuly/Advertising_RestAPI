@@ -10,6 +10,6 @@ db:
   username: "postgres"
   password: "qwerty"
   host: "127.0.0.1"
-  port: "5432"
+  port: "5430"
   dbname: "postgres"
   sslmode: "disable"

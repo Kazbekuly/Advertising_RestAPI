@@ -6,7 +6,8 @@ import (
 )
 
 type Authorization interface {
-	CreateUser(user model.User) (int error)
+	CreateUser(user model.User) (int, error)
+	GetUser(login, password string) (model.User, error)
 }
 
 type Repository struct {
@@ -14,5 +15,7 @@ type Repository struct {
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
-	return &Repository{}
+	return &Repository{
+		Authorization: NewAuthPostgres(db),
+	}
 }
